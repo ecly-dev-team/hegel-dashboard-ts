@@ -36,8 +36,11 @@ function logout() {
 </script>
 
 <template>
-  <div id="nav">
-    <button @click="logout" v-if="store.loggedIn()">Logout</button>
+  <div id="nav" v-if="store.loggedIn()">
+    <router-link :to="{ name: 'Home' }">Home</router-link>|
+    <router-link :to="{ name: 'Post' }">Post</router-link>|
+    <router-link :to="{ name: 'User' }">User</router-link>
+    <button @click="logout">Logout</button>
   </div>
   <div v-if="store.loggedIn()">Welcome, {{ getUser.value?.name }}</div>
   <router-view />
